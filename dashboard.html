@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prudential - Dashboard</title>
+
+    <link rel="stylesheet" href="../components/navbar.css" />
+
+    <style>
+        :root {
+            --accent-blue: #1089c9;
+            --accent-yellow: #e1c613;
+            --hero-blue: #00285b;
+            --hero-divider: #4b4ca0;
+            --cards-bg: #f2f2f2;
+            --card-title: #1780af;
+            --card-text: #898989;
+            --campaign-blue: #00285b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fff;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #111;
+        }
+
+        .dashboard {
+            min-height: 100vh;
+            background: #fff;
+        }
+
+        .hero {
+            position: relative;
+            height: 427px;
+            display: grid;
+            grid-template-columns: 47.3% 52.7%;
+            background: var(--hero-blue);
+            border-bottom: 1px solid var(--hero-divider);
+            overflow: hidden;
+        }
+
+        .hero-left {
+            position: relative;
+            background: #00285b;
+            color: #fff;
+            padding: 37px 0 0 56px;
+            z-index: 1;
+        }
+
+        .hero-title {
+            margin: 0;
+            max-width: 520px;
+            font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
+            font-size: 44px;
+            line-height: 1.06;
+            font-weight: 700;
+            letter-spacing: -0.7px;
+            color: #f5f5f5;
+        }
+
+        .hero-title .year {
+            color: #0f86ca;
+        }
+
+        .hero-message {
+            margin-top: 127px;
+            margin-left: 94px;
+            font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: -0.1px;
+            color: var(--accent-yellow);
+            white-space: nowrap;
+        }
+
+        .hero-button {
+            margin-top: 7px;
+            margin-left: 221px;
+            width: 48px;
+            height: 22px;
+            border: none;
+            background: var(--accent-blue);
+            color: #fff;
+            font-size: 8px;
+            font-weight: 700;
+            line-height: 22px;
+            padding: 0;
+            cursor: pointer;
+            box-shadow: none;
+        }
+
+        .hero-right {
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg,
+                    rgba(0, 40, 91, 0.90) 0%,
+                    rgba(0, 40, 91, 0.83) 5%,
+                    rgba(0, 40, 91, 0.63) 11%,
+                    rgba(0, 40, 91, 0.34) 18%,
+                    rgba(0, 40, 91, 0.12) 27%,
+                    rgba(0, 40, 91, 0.03) 36%,
+                    rgba(0, 40, 91, 0.00) 46%),
+                url("../assets/dashboard.png");
+            background-size: cover;
+            background-position: center center;
+        }
+
+        .hero-right::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 40, 91, 0.02) 0%,
+                    rgba(0, 40, 91, 0.05) 52%,
+                    rgba(0, 40, 91, 0.08) 100%);
+            pointer-events: none;
+        }
+
+        .hero-arrow {
+            position: absolute;
+            top: 180px;
+            width: 15px;
+            height: 28px;
+            background: #178bbd;
+            color: #fff;
+            font-size: 15px;
+            line-height: 28px;
+            text-align: center;
+            font-weight: 700;
+            z-index: 3;
+            user-select: none;
+        }
+
+        .hero-arrow.left {
+            left: 0;
+        }
+
+        .hero-arrow.right {
+            right: 0;
+        }
+
+        .feature-strip {
+            min-height: 115px;
+            background: var(--cards-bg);
+            display: flex;
+            justify-content: center;
+            gap: 94px;
+            padding: 35px 24px 15px;
+        }
+
+        .feature-card {
+            width: 182px;
+            color: #6f6f6f;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 6px;
+            font-family: "Arial Narrow", Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            line-height: 1.18;
+            color: var(--card-title);
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            margin: 0 0 10px;
+            font-size: 8px;
+            line-height: 1.45;
+            color: var(--card-text);
+        }
+
+        .feature-card button {
+            width: 48px;
+            height: 22px;
+            border: none;
+            background: var(--accent-blue);
+            color: #fff;
+            font-size: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .section-bar {
+            height: 37px;
+            background: var(--campaign-blue);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .section-bar .icon {
+            font-size: 11px;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .hero-message {
+                margin-left: 72px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 48% 52%;
+            }
+
+            .hero-left {
+                padding-left: 34px;
+            }
+
+            .hero-title {
+                font-size: 37px;
+                max-width: 460px;
+            }
+
+            .hero-message {
+                margin-top: 108px;
+                margin-left: 38px;
+                font-size: 16px;
+            }
+
+            .hero-button {
+                margin-left: 138px;
+            }
+
+            .feature-strip {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                padding: 32px 20px;
+            }
+
+            .hero-title {
+                font-size: 34px;
+                max-width: 100%;
+                letter-spacing: 0;
+            }
+
+            .hero-message,
+            .hero-button {
+                margin-left: 0;
+                white-space: normal;
+            }
+
+            .hero-message {
+                margin-top: 36px;
+                font-size: 18px;
+            }
+
+            .hero-right {
+                min-height: 240px;
+            }
+
+            .feature-strip {
+                flex-direction: column;
+                align-items: center;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body data-nav="mi-prudential">
+    <main class="dashboard">
+        <div id="navbar-container"></div>
+
+        <section class="hero">
+            <div class="hero-arrow left">‹</div>
+
+            <div class="hero-left">
+                <h1 class="hero-title">
+                    Programa de incentivos y<br />
+                    reconocimientos <span class="year">2022</span>
+                </h1>
+
+                <div class="hero-message">
+                    ¡Le deseamos el mayor de los éxitos este año!
+                </div>
+
+                <button class="hero-button" type="button">Leer más</button>
+            </div>
+
+            <div class="hero-right"></div>
+            <div class="hero-arrow right">›</div>
+        </section>
+
+        <section class="feature-strip">
+            <article class="feature-card">
+                <h3>Programas de Incentivos y Reconocimientos</h3>
+                <p>
+                    Conoce con detalle cómo puedes acceder a mejores compensaciones y
+                    reconocimientos en Prudential.
+                </p>
+                <button type="button">Leer más</button>
+            </article>
+
+            <article class="feature-card">
+                <h3>Cotizador</h3>
+                <p>
+                    Cotizador Agentes Independientes para generar las cotizaciones a tus
+                    clientes.
+                </p>
+                <button type="button">Leer más</button>
+            </article>
+        </section>
+
+        <div class="section-bar">
+            <span class="icon">▣</span>
+            <span>Campaña del Mes</span>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const container = document.getElementById("navbar-container");
+            if (!container) return;
+
+            try {
+                const response = await fetch("../components/navbar.html");
+                const html = await response.text();
+                container.innerHTML = html;
+
+                const activeItem = document.body.dataset.nav;
+                if (activeItem) {
+                    const activeLink = container.querySelector(`[data-nav="${activeItem}"]`);
+                    if (activeLink) activeLink.classList.add("active");
+                }
+            } catch (error) {
+                console.error("Error loading navbar:", error);
+            }
+        });
+    </script>
+</body>
+</html>

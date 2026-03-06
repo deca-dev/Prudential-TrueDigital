@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link data-testid="favicon" id="favicon" rel="icon" href="https://pbs.twimg.com/profile_images/1348997011517927425/KHp1BMdw_400x400.jpg">
     <title>Prudential - Dashboard</title>
 
-    <link rel="stylesheet" href="../components/navbar.css" />
+    <link rel="stylesheet" href="./components/navbar.css" />
 
     <style>
         :root {
@@ -117,7 +118,7 @@
                     rgba(0, 40, 91, 0.12) 27%,
                     rgba(0, 40, 91, 0.03) 36%,
                     rgba(0, 40, 91, 0.00) 46%),
-                url("../assets/dashboard.png");
+                url("./assets/dashboard.png");
             background-size: cover;
             background-position: center center;
         }
@@ -350,7 +351,7 @@
             if (!container) return;
 
             try {
-                const response = await fetch("../components/navbar.html");
+                const response = await fetch("./components/navbar.html");
                 const html = await response.text();
                 container.innerHTML = html;
 

@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pólizas - Prudential</title>
-  <link rel="stylesheet" href="../components/navbar.css" />
+  <link rel="stylesheet" href="./components/navbar.css" />
+  <link data-testid="favicon" id="favicon" rel="icon" href="https://pbs.twimg.com/profile_images/1348997011517927425/KHp1BMdw_400x400.jpg">
   <style>
     :root {
       --page-bg: #f6f6f6;
@@ -488,7 +489,7 @@
       if (!container) return;
 
       try {
-        const response = await fetch("../components/navbar.html");
+        const response = await fetch("./components/navbar.html");
         const html = await response.text();
         container.innerHTML = html;
 

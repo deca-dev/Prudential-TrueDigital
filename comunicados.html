@@ -235,5 +235,39 @@
       }
     });
   </script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mainNav = document.querySelector(".main-nav");
+    const toggle = document.querySelector(".nav-toggle");
+    const dropdownParents = document.querySelectorAll(".nav-item.has-dropdown");
+
+    if (toggle && mainNav) {
+      toggle.addEventListener("click", () => {
+        const isOpen = mainNav.classList.toggle("menu-open");
+        toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    }
+
+    dropdownParents.forEach((item) => {
+      const link = item.querySelector(".nav-link");
+
+      link.addEventListener("click", (e) => {
+        if (window.innerWidth <= 1100) {
+          e.preventDefault();
+          item.classList.toggle("open");
+        }
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1100) {
+        mainNav?.classList.remove("menu-open");
+        dropdownParents.forEach((item) => item.classList.remove("open"));
+        toggle?.setAttribute("aria-expanded", "false");
+      }
+    });
+  });
+</script>
 </body>
 </html>
